@@ -1,4 +1,4 @@
-/* 시스템 폰트 및 기본 설정 */
+/* ì‹œìŠ¤í…œ í°íŠ¸ ë° ê¸°ë³¸ ì„¤ì • */
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&display=swap');
 
 :root {
@@ -13,7 +13,7 @@
 }
 
 body {
-    background-color: #222;
+    background-color: #b93d3d;
     display: flex;
     gap: 20px;
     padding-top: 50px;
@@ -37,24 +37,28 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 300px; /* stat-window와 같은 너비 */
+    width: 300px; /* stat-windowì™€ ê°™ì€ ë„ˆë¹„ */
 }
 
-/* 4열을 담당하는 컨테이너 */
+/* 4ì—´ì„ ë‹´ë‹¹í•˜ëŠ” ì»¨í…Œì´ë„ˆ */
 .right-sidebar {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 350px;
 }
 
 /* =========================
    Window Base Styles
 ========================= */
+.stat-window{
+	min-width: 300px;
+}
+
 .preset-window,
 .stat-window,
 .item-window {
-    width: 100%; /* left-column 내에서는 100% */
+    width: 100%; /* left-column ë‚´ì—ì„œëŠ” 100% */
+
     height: 100%;
     background-color: var(--bg-frame);
     border: 1px solid var(--border-outer);
@@ -66,15 +70,16 @@ body {
 }
 
 .preset-window {
-    height: auto; /* 프리셋은 컨텐츠 높이에 맞춤 */
+    height: auto; /* í”„ë¦¬ì…‹ì€ ì»¨í…ì¸  ë†’ì´ì— ë§žì¶¤ */
 }
 
 .item-window {
-    width: 300px; /* item-window는 독립적 */
+    width: 300px; /* item-windowëŠ” ë…ë¦½ì  */
 }
 
 .equip-window {
     width: 350px;
+    min-width: 350px;
     background-color: var(--bg-frame);
     border: 1px solid var(--border-outer);
     border-radius: 6px;
@@ -85,7 +90,8 @@ body {
 }
 
 .skill-window {
-    width: 300px;
+    width: 260px;
+	max-height: 260px;
     background-color: var(--bg-frame);
     border: 1px solid var(--border-outer);
     border-radius: 6px;
@@ -96,7 +102,8 @@ body {
 }
 
 .buff-window {
-    width: 300px;
+    width: 260px;
+    max-height: 260px;
     min-height: 200px;
     background-color: var(--bg-frame);
     border: 1px solid var(--border-outer);
@@ -218,7 +225,7 @@ input {
     background-color: #acc23c;
 }
 
-/* 스탯 버튼 그룹 */
+/* ìŠ¤íƒ¯ ë²„íŠ¼ ê·¸ë£¹ */
 .stat-btn-group {
     display: flex;
     gap: 2px;
@@ -278,7 +285,7 @@ input {
 /* =========================
    Preset
 ========================= */
-/* .preset-container - 더 이상 사용하지 않음 (프리셋이 stat-window 내부로 이동)
+/* .preset-container - ë” ì´ìƒ ì‚¬ìš©í•˜ì§€ ì•ŠìŒ (í”„ë¦¬ì…‹ì´ stat-window ë‚´ë¶€ë¡œ ì´ë™)
 .preset-container {
     width: 280px;
     background: #3a3c58;
@@ -290,7 +297,7 @@ input {
 }
 */
 
-/* .preset-header - 미사용
+/* .preset-header - ë¯¸ì‚¬ìš©
 .preset-header {
     color: #fff;
     font-size: 11px;
@@ -392,7 +399,7 @@ input {
     border: 1px solid #555;
 }
 
-/* 기존 search-item (사용 중이면 유지) */
+/* ê¸°ì¡´ search-item (ì‚¬ìš© ì¤‘ì´ë©´ ìœ ì§€) */
 .search-item {
     display: flex;
     align-items: center;
@@ -409,7 +416,7 @@ input {
     object-fit: contain;
 }
 
-/* JS 인라인 제거용 search 결과 클래스 */
+/* JS ì¸ë¼ì¸ ì œê±°ìš© search ê²°ê³¼ í´ëž˜ìŠ¤ */
 .search-result-item {
     padding: 8px;
     cursor: pointer;
@@ -436,7 +443,7 @@ input {
     padding: 5px;
 }
 
-/* inv-item (중복 정의 통합) */
+/* inv-item (ì¤‘ë³µ ì •ì˜ í†µí•©) */
 .inv-item {
     padding: 6px;
     margin-bottom: 4px;
@@ -457,7 +464,7 @@ input {
     font-weight: bold;
 }
 
-/* 장착된 아이템 강조 스타일 (기존 유지) */
+/* ìž¥ì°©ëœ ì•„ì´í…œ ê°•ì¡° ìŠ¤íƒ€ì¼ (ê¸°ì¡´ ìœ ì§€) */
 #equipped-list .inv-item {
     border-left: 3px solid #bcd24c;
     background: #3e415b;
@@ -470,7 +477,7 @@ input {
     padding: 0 5px;
 }
 
-/* 4열 그리드 레이아웃 */
+/* 4ì—´ ê·¸ë¦¬ë“œ ë ˆì´ì•„ì›ƒ */
 .inventory-grid {
     display: grid;
     grid-template-columns: repeat(4, 58px);
@@ -484,7 +491,7 @@ input {
     box-shadow: inset 1px 1px 4px rgba(0,0,0,0.2);
 }
 
-/* 슬롯 */
+/* ìŠ¬ë¡¯ */
 .item-slot {
     width: 58px;
     height: 58px;
@@ -513,7 +520,7 @@ input {
     /* image-rendering: pixelated; */
 }
 
-/* 슬롯 내 관리 버튼 */
+/* ìŠ¬ë¡¯ ë‚´ ê´€ë¦¬ ë²„íŠ¼ */
 .slot-manage-btn {
     position: absolute;
     top: -2px;
@@ -541,7 +548,7 @@ input {
    Tooltip
 ========================= */
 
-/* (정리) JS에서 생성하는 #item-tooltip 기본 스타일 */
+/* (ì •ë¦¬) JSì—ì„œ ìƒì„±í•˜ëŠ” #item-tooltip ê¸°ë³¸ ìŠ¤íƒ€ì¼ */
 #item-tooltip {
     position: fixed;
     display: none;
@@ -557,7 +564,7 @@ input {
     box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
-/* 기존 tooltip 스타일들 (사용 중이면 유지) */
+/* ê¸°ì¡´ tooltip ìŠ¤íƒ€ì¼ë“¤ (ì‚¬ìš© ì¤‘ì´ë©´ ìœ ì§€) */
 .item-tooltip {
     position: fixed;
     z-index: 10000;
@@ -629,7 +636,7 @@ input {
     justify-content: center;
 }
 
-/* 또 다른 툴팁 박스 스타일 (사용 중이면 유지) */
+/* ë˜ ë‹¤ë¥¸ íˆ´íŒ ë°•ìŠ¤ ìŠ¤íƒ€ì¼ (ì‚¬ìš© ì¤‘ì´ë©´ ìœ ì§€) */
 .item-tooltip-box {
     position: fixed;
     background: rgba(20, 20, 40, 0.95);
@@ -675,7 +682,7 @@ input {
     touch-action: pan-y;
 }
 
-/* 아바타 실루엣 */
+/* ì•„ë°”íƒ€ ì‹¤ë£¨ì—£ */
 .avatar-silhouette {
     position: absolute;
     top: 50%;
@@ -688,7 +695,7 @@ input {
     pointer-events: none;
 }
 
-/* (정리) equip-grid/slot 최종값 기준 통합 */
+/* (ì •ë¦¬) equip-grid/slot ìµœì¢…ê°’ ê¸°ì¤€ í†µí•© */
 .equip-grid {
     display: grid;
     grid-template-columns: repeat(5, 34px);
@@ -714,7 +721,7 @@ input {
     text-align: center;
 }
 
-/* 빈 슬롯 텍스트 */
+/* ë¹ˆ ìŠ¬ë¡¯ í…ìŠ¤íŠ¸ */
 .slot.empty::before {
     content: attr(data-slot);
     position: absolute;
@@ -722,7 +729,7 @@ input {
     line-height: 1;
 }
 
-/* 붉은색 특수 슬롯 */
+/* ë¶‰ì€ìƒ‰ íŠ¹ìˆ˜ ìŠ¬ë¡¯ */
 .slot.red-slot {
     border-color: #a33535;
     background: rgba(241, 190, 190, 0.5);
@@ -743,18 +750,21 @@ input {
 /* =========================
    Equipped List Row (Drag)
 ========================= */
-/* 기존 정의 + JS 인라인 제거용 확장 클래스 포함 */
+/* ê¸°ì¡´ ì •ì˜ + JS ì¸ë¼ì¸ ì œê±°ìš© í™•ìž¥ í´ëž˜ìŠ¤ í¬í•¨ */
 .equipped-item-row {
     display: flex;
     align-items: center;
     padding: 10px 8px;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #f0f0f0;
     color: #eee;
     cursor: grab;
     transition: all 0.2s;
     user-select: none;
-    touch-action: none; /* 터치 스크롤 방지 */
+    touch-action: none; /* í„°ì¹˜ ìŠ¤í¬ë¡¤ ë°©ì§€ */
     position: relative;
+}
+.equipped-item-row:last-child {
+    border-bottom: none;
 }
 
 .equipped-item-row:hover {
@@ -812,7 +822,7 @@ input {
     font-size: 10px;
 }
 
-/* (기존에 있던 장착 아이템 행 스타일들 - 사용 중이면 유지) */
+/* (ê¸°ì¡´ì— ìžˆë˜ ìž¥ì°© ì•„ì´í…œ í–‰ ìŠ¤íƒ€ì¼ë“¤ - ì‚¬ìš© ì¤‘ì´ë©´ ìœ ì§€) */
 .equip-item-row {
     display: flex;
     padding: 10px 5px;
@@ -855,14 +865,14 @@ input {
 }
 
 /* =========================
-   Skill Window (JS 인라인 제거용)
+   Skill Window (JS ì¸ë¼ì¸ ì œê±°ìš©)
 ========================= */
 .skill-row {
     display: flex;
     align-items: center;
     padding: 10px;
-    border-bottom: 1px solid #333;
-    background: #1a1b2e;
+    border-bottom: 1px solid #f0f0f0;
+    background: #333;
 }
 
 .skill-icon-box {
@@ -904,7 +914,7 @@ input {
 }
 
 /* =========================
-   Buff Window (JS 인라인 제거용)
+   Buff Window (JS ì¸ë¼ì¸ ì œê±°ìš©)
 ========================= */
 .buff-list {
     display: flex;
@@ -938,10 +948,10 @@ input {
 }
 
 /* =========================
-   Modal System (정리 통합)
+   Modal System (ì •ë¦¬ í†µí•©)
 ========================= */
 .modal {
-    display: none; /* JS에서 flex로 변경 */
+    display: none; /* JSì—ì„œ flexë¡œ ë³€ê²½ */
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -953,7 +963,7 @@ input {
     align-items: center;
 }
 
-/* 최종 modal-content 값 기준(기존 중복 통합) */
+/* ìµœì¢… modal-content ê°’ ê¸°ì¤€(ê¸°ì¡´ ì¤‘ë³µ í†µí•©) */
 .modal-content {
     background: #4a4d7d;
     color: white;
@@ -982,7 +992,7 @@ input {
     gap: 5px;
 }
 
-/* 모달 레이아웃 */
+/* ëª¨ë‹¬ ë ˆì´ì•„ì›ƒ */
 .req-info-container {
     display: flex;
     padding: 15px;
@@ -990,7 +1000,7 @@ input {
     align-items: center;
 }
 
-/* 아이템 이미지 박스 */
+/* ì•„ì´í…œ ì´ë¯¸ì§€ ë°•ìŠ¤ */
 .item-img-box {
     width: 60px;
     height: 60px;
@@ -1005,7 +1015,7 @@ input {
     max-height: 40px;
 }
 
-/* 요구 스탯 */
+/* ìš”êµ¬ ìŠ¤íƒ¯ */
 .req-stats {
     flex: 1;
     display: flex;
@@ -1016,7 +1026,7 @@ input {
     opacity: 0.9;
 }
 
-/* 직업 체크 영역(있으면 유지) */
+/* ì§ì—… ì²´í¬ ì˜ì—­(ìžˆìœ¼ë©´ ìœ ì§€) */
 .job-check-area {
     display: flex;
     justify-content: space-between;
@@ -1025,14 +1035,14 @@ input {
     font-weight: bold;
 }
 
-/* 옵션 리스트 */
+/* ì˜µì…˜ ë¦¬ìŠ¤íŠ¸ */
 .mod-option-list {
     max-height: 300px;
     overflow-y: auto;
     padding: 10px 15px;
 }
 
-/* 모달 내부 행 (기존 + 유지) */
+/* ëª¨ë‹¬ ë‚´ë¶€ í–‰ (ê¸°ì¡´ + ìœ ì§€) */
 .mod-row {
     display: flex;
     align-items: center;
@@ -1064,7 +1074,7 @@ input {
     outline: none;
 }
 
-/* 아이템 수정 모달 내부 디자인(추가 구조) */
+/* ì•„ì´í…œ ìˆ˜ì • ëª¨ë‹¬ ë‚´ë¶€ ë””ìžì¸(ì¶”ê°€ êµ¬ì¡°) */
 .mod-row-design {
     display: flex;
     justify-content: space-between;
@@ -1079,7 +1089,7 @@ input {
     align-items: center;
 }
 
-/* 옵션 입력 */
+/* ì˜µì…˜ ìž…ë ¥ */
 .mod-opt-input {
     width: 60px;
     background: #2e3152;
@@ -1089,7 +1099,7 @@ input {
     border-radius: 4px;
 }
 
-/* JS addOptionRow용(인라인 제거) */
+/* JS addOptionRowìš©(ì¸ë¼ì¸ ì œê±°) */
 .mod-opt-row {
     display: flex;
     justify-content: space-between;
@@ -1105,7 +1115,7 @@ input {
     text-align: center;
 }
 
-/* 옵션 삭제 버튼 */
+/* ì˜µì…˜ ì‚­ì œ ë²„íŠ¼ */
 .btn-stat-del {
     background: #6b6e9a;
     border: none;
@@ -1116,7 +1126,7 @@ input {
     border-radius: 3px;
 }
 
-/* 장비 추가시 삭제 버튼 스타일 보강 */
+/* ìž¥ë¹„ ì¶”ê°€ì‹œ ì‚­ì œ ë²„íŠ¼ ìŠ¤íƒ€ì¼ ë³´ê°• */
 .mod-del-btn {
     background: none;
     border: none;
@@ -1133,7 +1143,7 @@ input {
     color: #ff9999 !important;
 }
 
-/* 모달 하단 버튼 영역 */
+/* ëª¨ë‹¬ í•˜ë‹¨ ë²„íŠ¼ ì˜ì—­ */
 .mod-footer {
     padding: 15px;
     display: flex;
@@ -1253,7 +1263,7 @@ input {
    (append to bottom of main.css)
 ========================= */
 
-/* 공통: 전체가 화면 밖으로 밀려나지 않도록 */
+/* ê³µí†µ: ì „ì²´ê°€ í™”ë©´ ë°–ìœ¼ë¡œ ë°€ë ¤ë‚˜ì§€ ì•Šë„ë¡ */
 html, body {
   max-width: 100%;
   overflow-x: hidden;
@@ -1263,10 +1273,10 @@ body.main-layout {
   width: 100%;
   box-sizing: border-box;
   padding: 16px;
-  padding-top: 16px; /* 기존 50px이 모바일에서 너무 큼 */
+  padding-top: 16px; /* ê¸°ì¡´ 50pxì´ ëª¨ë°”ì¼ì—ì„œ ë„ˆë¬´ í¼ */
 }
 
-/* 기본 창들이 화면 폭에 맞게 줄어들 수 있도록 */
+/* ê¸°ë³¸ ì°½ë“¤ì´ í™”ë©´ í­ì— ë§žê²Œ ì¤„ì–´ë“¤ ìˆ˜ ìžˆë„ë¡ */
 .preset-window,
 .stat-window,
 .item-window,
@@ -1276,20 +1286,20 @@ body.main-layout {
   box-sizing: border-box;
 }
 
-/* 검색 인풋이 너무 좁지 않게 */
+/* ê²€ìƒ‰ ì¸í’‹ì´ ë„ˆë¬´ ì¢ì§€ ì•Šê²Œ */
 #item-search {
   box-sizing: border-box;
   max-width: 100%;
 }
 
-/* 인벤토리 그리드가 작은 화면에서 튀어나오는 것 방지 */
+/* ì¸ë²¤í† ë¦¬ ê·¸ë¦¬ë“œê°€ ìž‘ì€ í™”ë©´ì—ì„œ íŠ€ì–´ë‚˜ì˜¤ëŠ” ê²ƒ ë°©ì§€ */
 .inventory-grid {
   max-width: 100%;
   overflow: auto;
 }
 
 
-/* ============ Tablet (768px ~ 1024px): 2열 ============ */
+/* ============ Tablet (768px ~ 1024px): 2ì—´ ============ */
 @media (max-width: 1024px) and (min-width: 768px) {
   body.main-layout {
     display: grid;
@@ -1299,7 +1309,7 @@ body.main-layout {
     padding: 16px;
   }
 
-  /* left-column은 세로 배치 유지 */
+  /* left-columnì€ ì„¸ë¡œ ë°°ì¹˜ ìœ ì§€ */
   .left-column {
     display: flex;
     flex-direction: column;
@@ -1307,12 +1317,12 @@ body.main-layout {
     width: 100%;
   }
 
-  /* 프리셋은 left-column 내부 첫 번째 */
+  /* í”„ë¦¬ì…‹ì€ left-column ë‚´ë¶€ ì²« ë²ˆì§¸ */
   .preset-window {
     width: 100%;
   }
 
-  /* 각 창은 칸에 맞춰 100% */
+  /* ê° ì°½ì€ ì¹¸ì— ë§žì¶° 100% */
   .stat-window,
   .equip-window,
   .right-sidebar,
@@ -1322,25 +1332,25 @@ body.main-layout {
     width: 100%;
   }
 
-  /* right-sidebar 내부 간격 */
+  /* right-sidebar ë‚´ë¶€ ê°„ê²© */
   .right-sidebar {
     gap: 14px;
     width: 100%;
   }
 
-  /* 스크롤: 너무 길어지지 않게 */
+  /* ìŠ¤í¬ë¡¤: ë„ˆë¬´ ê¸¸ì–´ì§€ì§€ ì•Šê²Œ */
   #skill-list-container {
     max-height: 260px;
     overflow-y: auto;
   }
 
-  /* 장착 리스트는 태블릿에서 너무 눌리지 않게 "필요하면" 스크롤 */
+  /* ìž¥ì°© ë¦¬ìŠ¤íŠ¸ëŠ” íƒœë¸”ë¦¿ì—ì„œ ë„ˆë¬´ ëˆŒë¦¬ì§€ ì•Šê²Œ "í•„ìš”í•˜ë©´" ìŠ¤í¬ë¡¤ */
   #equipped-list {
     max-height: 100%;
   }
 }
 
-/* ============ Mobile (<= 767px): 1열 ============ */
+/* ============ Mobile (<= 767px): 1ì—´ ============ */
 @media (max-width: 767px) {
   body.main-layout {
     display: flex;
@@ -1350,7 +1360,7 @@ body.main-layout {
     padding: 12px;
   }
 
-  /* left-column도 세로 배치 */
+  /* left-columnë„ ì„¸ë¡œ ë°°ì¹˜ */
   .left-column {
     display: flex;
     flex-direction: column;
@@ -1358,7 +1368,7 @@ body.main-layout {
     width: 100%;
   }
 
-  /* 창들은 모두 100% */
+  /* ì°½ë“¤ì€ ëª¨ë‘ 100% */
   .preset-window,
   .stat-window,
   .equip-window,
@@ -1370,7 +1380,7 @@ body.main-layout {
     padding: 10px;
   }
 
-  /* 라벨 폭/폰트 조정 */
+  /* ë¼ë²¨ í­/í°íŠ¸ ì¡°ì • */
   .label {
     width: 70px;
     font-size: 13px;
@@ -1382,7 +1392,7 @@ body.main-layout {
     font-size: 13px;
   }
 
-  /* 프리셋 버튼 줄바꿈 대응 */
+  /* í”„ë¦¬ì…‹ ë²„íŠ¼ ì¤„ë°”ê¿ˆ ëŒ€ì‘ */
   .preset-wrapper {
     flex-wrap: wrap;
   }
@@ -1397,7 +1407,7 @@ body.main-layout {
     width: 100%;
   }
 
-  /* 인벤토리: 4열 유지, 넘치면 스크롤 */
+  /* ì¸ë²¤í† ë¦¬: 4ì—´ ìœ ì§€, ë„˜ì¹˜ë©´ ìŠ¤í¬ë¡¤ */
   .inventory-grid {
     grid-template-columns: repeat(4, 54px);
     grid-template-rows: repeat(7, 54px);
@@ -1412,18 +1422,18 @@ body.main-layout {
     width: 38px;
   }
 
-  /* 장착 리스트 줄바꿈 */
+  /* ìž¥ì°© ë¦¬ìŠ¤íŠ¸ ì¤„ë°”ê¿ˆ */
   .equipped-item-name {
     word-break: break-word;
   }
 
-  /* 툴팁 폭 제한 */
+  /* íˆ´íŒ í­ ì œí•œ */
   #item-tooltip {
     width: 200px;
     max-width: calc(100vw - 24px);
   }
 
-  /* 스킬/장착 리스트 높이 제한 + 스크롤 */
+  /* ìŠ¤í‚¬/ìž¥ì°© ë¦¬ìŠ¤íŠ¸ ë†’ì´ ì œí•œ + ìŠ¤í¬ë¡¤ */
   #skill-list-container {
     max-height: 220px;
     overflow-y: auto;
@@ -1432,12 +1442,12 @@ body.main-layout {
     max-height: 100%;
   }
 
-  /* 검색 결과 높이 제한 */
+  /* ê²€ìƒ‰ ê²°ê³¼ ë†’ì´ ì œí•œ */
   #search-results {
     max-height: 200px;
   }
   
-  /* 모바일에서 장비 아이템 터치 피드백 */
+  /* ëª¨ë°”ì¼ì—ì„œ ìž¥ë¹„ ì•„ì´í…œ í„°ì¹˜ í”¼ë“œë°± */
   .equipped-item-row {
     cursor: pointer;
     user-select: none;
