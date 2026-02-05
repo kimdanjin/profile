@@ -1,0 +1,63 @@
+{
+  "consumables": [
+    {
+      "id": 2002017,
+      "name": "전사의 비약",
+      "pad": 2,
+      "duration": 480,
+      "desc": "8분간 물리 공격력 +2",
+      "icon": "https://maplestory.io/api/gms/62/item/2002017/icon?resize=2"
+    },
+    {
+      "id": 2022109,
+      "name": "나인스피릿의 숨결",
+      "pad": 25,
+      "mad": 35,
+      "duration": 3600,
+      "desc": "1시간 물리 공격력 +10",
+      "icon": "https://maplestory.io/api/gms/62/item/2022109/icon?resize=2"
+    },
+    {
+      "id": 2022002,
+      "name": "사이다",
+      "pad": 10,
+      "duration": 300,
+      "desc": "5분간 물리 공격력 +10",
+      "icon": "https://maplestory.io/api/gms/62/item/2022002/icon?resize=2"
+    },
+    {
+      "id": 2002006,
+      "name": "전사의 알약",
+      "pad": 5,
+      "duration": 600,
+      "desc": "10분간 물리 공격력 +5",
+      "icon": "https://maplestory.io/api/gms/62/item/2002006/icon?resize=2"
+    },
+    {
+      "id": 2022025,
+      "name": "타코야키(점보)",
+      "pad": 8,
+      "duration": 600,
+      "desc": "10분간 물리 공격력 +8",
+      "icon": "https://maplestory.io/api/gms/62/item/2022025/icon?resize=2"
+    },
+    {
+      "id": 2022089,
+      "name": "아기 용의 이유식",
+      "pad": 7,
+      "duration": 1200,
+      "desc": "20분간 물리 공격력 +7",
+      "icon": "https://maplestory.io/api/gms/62/item/2022089/icon?resize=2"
+    },
+    {
+      "id": 2022027,
+      "name": "야끼소바(곱배기)",
+      "mad": 10,
+      "duration": 1200,
+      "desc": "10분간 물리 마력 +10",
+      "icon": "https://maplestory.io/api/gms/62/item/2022027/icon?resize=2"
+    }
+
+
+  ]
+}

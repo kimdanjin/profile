@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>메이플랜드 스탯 계산기</title>
+    <link rel="stylesheet" href="main.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body class="main-layout">
+
+    <div class="left-column">
+        <div class="preset-window">
+            <div class="header">
+                <span class="header-title">CHARACTER PRESET</span>
+            </div>
+            <div class="preset-wrapper">
+                <div class="preset-buttons">
+                    <button class="btn-preset" onclick="loadPreset(1)">1</button>
+                    <button class="btn-preset" onclick="loadPreset(2)">2</button>
+                    <button class="btn-preset" onclick="loadPreset(3)">3</button>
+                    <button class="btn-preset" onclick="loadPreset(4)">4</button>
+                    <button class="btn-preset" onclick="loadPreset(5)">5</button>
+                </div>
+                <div class="preset-action-buttons">
+                    <button class="btn-save-preset" onclick="saveCurrentPreset()">현재 세팅 저장</button>
+                    <button class="btn-capture-preset" onclick="captureScreenshot()">스크린샷 캡쳐</button>
+                </div>
+            </div>
+            <div id="active-preset-label" style="text-align: center; padding: 5px 0; font-size: 12px; color: #000;">선택된 프리셋 없음</div>
+        </div>
+
+        <div class="stat-window">
+            <div class="header">
+                <span class="header-title">CHARACTER STAT</span>
+            </div>
+
+            <div class="section-box">
+            <div class="row">
+                <div class="label bg-pink">직업군</div>
+                <div class="val-box">
+                    <select id="job-category" onchange="updateJobList()" style="border:none; background:transparent; width: 100%; outline:none;">
+                        <option value="beginner">초보자</option>
+                        <option value="warrior">전사</option>
+                        <option value="mage">마법사</option>
+                        <option value="archer">궁수</option>
+                        <option value="thief">도적</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="label bg-pink">직업</div>
+                <div class="val-box">
+                    <select id="job-detail" onchange="updateStats()" style="border:none; background:transparent; width: 100%; outline:none;"></select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="label bg-pink">레벨</div>
+                <div class="val-box">
+                    <input type="number" id="char-level" value="1" min="1" max="200" onchange="calculateAP()">
+                </div>
+            </div>
+        </div>
+
+        <div class="ap-area">
+            <div class="ap-info">
+                <div class="ap-title">ABILITY POINT</div>
+                <div class="ap-val" id="disp-ap">0</div>
+            </div>
+            <button class="btn-reset" onclick="resetStats()">스탯 초기화</button>
+        </div>
+
+        <div class="section-box">
+            <div class="row">
+                <div class="label bg-lime">STR</div>
+                <div class="val-box" id="full-str">4 (4+0)</div>
+                <div class="stat-btn-group">
+                    <button class="btn-stat" onclick="openStatChangeModal(event, 'str', false)">-</button>
+                    <button class="btn-stat" onclick="openStatChangeModal(event, 'str', true)">+</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="label bg-lime">DEX</div>
+                <div class="val-box" id="full-dex">4 (4+0)</div>
+                <div class="stat-btn-group">
+                    <button class="btn-stat" onclick="openStatChangeModal(event, 'dex', false)">-</button>
+                    <button class="btn-stat" onclick="openStatChangeModal(event, 'dex', true)">+</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="label bg-lime">INT</div>
+                <div class="val-box" id="full-int">4 (4+0)</div>
+                <div class="stat-btn-group">
+                    <button class="btn-stat" onclick="openStatChangeModal(event, 'int', false)">-</button>
+                    <button class="btn-stat" onclick="openStatChangeModal(event, 'int', true)">+</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="label bg-lime">LUK</div>
+                <div class="val-box" id="full-luk">4 (4+0)</div>
+                <div class="stat-btn-group">
+                    <button class="btn-stat" onclick="openStatChangeModal(event, 'luk', false)">-</button>
+                    <button class="btn-stat" onclick="openStatChangeModal(event, 'luk', true)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <div class="row"><div class="label bg-blue">공격력</div><div class="val-box" id="disp-atk">0 ~ 0</div></div>
+            <div class="row"><div class="label bg-blue">물리방어력</div><div class="val-box " id="disp-wdef">0</div></div>
+            <div class="row"><div class="label bg-blue">마력</div><div class="val-box " id="disp-mad">0</div></div>
+            <div class="row"><div class="label bg-blue">마법방어력</div><div class="val-box " id="disp-mdef">0</div></div>
+            <div class="row"><div class="label bg-blue">명중률</div><div class="val-box " id="disp-acc">0</div></div>
+            <div class="row"><div class="label bg-blue">회피율</div><div class="val-box " id="disp-eva">0</div></div>
+            <div class="row"><div class="label bg-blue">손재주</div><div class="val-box" id="disp-hand">0</div></div>
+        </div>
+        </div> <!-- stat-window 닫기 -->
+    </div> <!-- left-column 닫기 -->
+
+<div class="equip-window">
+
+
+    <div class="header"><span class="header-title">EQUIPPED ITEMS</span></div>
+    <div class="equip-body">
+        <div id="equipped-list" class="equipped-list">
+            </div>
+    </div>
+</div>
+
+
+
+
+<div class="right-sidebar">
+	<div class="skill-window">
+		<div class="header">
+			<span class="header-title">SKILL INVENTORY</span>
+		</div>
+		<div id="skill-list-container"></div>
+	</div>
+
+	<div class="buff-window">
+		<div class="header">
+			<span class="header-title">BUFF INFO</span>
+		</div>
+		<div class="buff-container">
+		
+
+		</div>
+	</div>
+</div>
+
+
+
+
+<div class="item-window">
+
+
+	<div class="header"><span class="header-title">ITEM INVENTORY</span></div>
+
+	
+    <div class="section-box" style="position: relative;">
+        <input type="text" id="item-search" placeholder="아이템 검색..." style="width:90%; padding:5px; margin:5px;">
+        <div id="search-results" class="search-box"></div>
+    </div>
+	
+	
+	
+    <div class="inventory-content">
+        <div id="inventory-grid" class="inventory-grid">
+            </div>
+        <div class="inv-scrollbar"></div>
+    </div>
+</div>
+
+
+
+    <div id="item-mod-modal" class="modal">
+        <div class="modal-content">
+            <div class="mod-header-title">
+                <span id="mod-item-name">아이템 이름</span>
+                <span>(+ <input type="number" id="mod-upgrade-val" class="mod-input" style="width:40px;" value="0">)</span>
+            </div>
+            <div class="req-info-container">
+                <div class="item-img-box"><img id="mod-item-icon" src="" alt=""></div>
+                <div class="req-stats" id="mod-req-stats"></div>
+            </div>
+            <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.2); margin: 0 15px;">
+            <div id="item-mod-list" class="mod-option-list"></div>
+            <div class="mod-row" style="padding: 10px 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 0 15px;">
+                <select id="add-opt-select" class="mod-input" style="width: 130px;">
+				<option value="" disabled selected>추가 옵션</option>
+				</select>
+                <button class="btn-save" onclick="addNewOptionRow()">추가</button>
+            </div>
+            <div class="mod-footer">
+                <button class="btn-cancel" onclick="closeModal('item-mod-modal')">취소</button>
+                <button class="btn-save" onclick="addToInventory()">저장</button>
+            </div>
+        </div>
+    </div>
+
+<div id="stat-input-modal" class="modal">
+    <div class="modal-content stat-modify-modal">
+        <div class="mod-header-title">
+            <span id="target-stat-name">STR 스탯 조절</span>
+        </div>
+        
+        <div class="stat-calc-container">
+            <div class="stat-preview">
+                <div class="stat-box-item">
+                    <span class="st-label">현재</span>
+                    <span id="modal-current-val" class="st-val">4</span>
+                </div>
+                <div class="stat-arrow">▶</div>
+                <div class="stat-box-item">
+                    <span class="st-label">결과</span>
+                    <span id="modal-result-val" class="st-val">4</span>
+                </div>
+            </div>
+
+            <div class="stat-input-wrapper">
+                <span id="modal-op-symbol" class="op-symbol">+</span>
+                <input type="number" id="stat-change-input" class="mod-input" placeholder="0" oninput="updateModalPreview()">
+            </div>
+        </div>
+
+        <div class="mod-footer">
+            <button class="btn-cancel" onclick="closeModal('stat-input-modal')">취소</button>
+            <button class="btn-save" id="stat-save-btn" onclick="applyStatChange()">적용하기</button>
+        </div>
+    </div>
+</div>
+
+    <script src="main.js"></script>
+</body>
+</html>

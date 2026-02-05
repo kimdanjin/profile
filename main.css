@@ -1,0 +1,1459 @@
+/* 시스템 폰트 및 기본 설정 */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&display=swap');
+
+:root {
+    --bg-frame: #e7f1d7;
+    --border-outer: #8ba37e;
+    --label-pink: #d65a8a;
+    --label-lime: #b7d149;
+    --label-blue: #5e8ec4;
+    --val-bg: #f5f5f5;
+    --text-main: #333333;
+    --text-red: #f13a3a;
+}
+
+body {
+    background-color: #222;
+    display: flex;
+    gap: 20px;
+    padding-top: 50px;
+    justify-content: center;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+/* =========================
+   Layout
+========================= */
+.main-layout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    background-color: #222;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 300px; /* stat-window와 같은 너비 */
+}
+
+/* 4열을 담당하는 컨테이너 */
+.right-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 350px;
+}
+
+/* =========================
+   Window Base Styles
+========================= */
+.preset-window,
+.stat-window,
+.item-window {
+    width: 100%; /* left-column 내에서는 100% */
+    height: 100%;
+    background-color: var(--bg-frame);
+    border: 1px solid var(--border-outer);
+    border-radius: 6px;
+    padding: 8px;
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.preset-window {
+    height: auto; /* 프리셋은 컨텐츠 높이에 맞춤 */
+}
+
+.item-window {
+    width: 300px; /* item-window는 독립적 */
+}
+
+.equip-window {
+    width: 350px;
+    background-color: var(--bg-frame);
+    border: 1px solid var(--border-outer);
+    border-radius: 6px;
+    padding: 8px;
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.skill-window {
+    width: 300px;
+    background-color: var(--bg-frame);
+    border: 1px solid var(--border-outer);
+    border-radius: 6px;
+    padding: 8px;
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.buff-window {
+    width: 300px;
+    min-height: 200px;
+    background-color: var(--bg-frame);
+    border: 1px solid var(--border-outer);
+    border-radius: 6px;
+    padding: 8px;
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================
+   Header / Sections
+========================= */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    border: 1px solid #9dbd9d;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin-bottom: 8px;
+    flex-shrink: 0;
+}
+
+.header-title {
+    font-size: 13px;
+    font-weight: 900;
+    color: #444;
+}
+
+.section-box {
+    background: white;
+    border: 1px solid #c2c2c2;
+    border-radius: 2px;
+    padding: 4px;
+    margin-bottom: 8px;
+}
+
+.row {
+    display: flex;
+    margin-bottom: 4px;
+    height: 28px;
+    align-items: center;
+}
+
+.row-clickable {
+    display: flex;
+    align-items: center;
+    padding-right: 2px;
+}
+
+.label {
+    width: 85px;
+    color: white;
+    font-size: 14px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1px;
+    margin-right: 4px;
+    height: 24px;
+}
+
+.val-box {
+    flex: 1;
+    background: var(--val-bg);
+    border: 1px solid #e0e0e0;
+    font-size: 14px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    height: 24px;
+}
+
+select,
+input {
+    border: none;
+    background: transparent;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    outline: none;
+    color: var(--text-main);
+    width: 100%;
+}
+
+/* Label Color Themes */
+.bg-pink {
+    background-color: var(--label-pink);
+    text-shadow: 1px 1px 0px #a04060;
+}
+.bg-lime {
+    background-color: var(--label-lime);
+    text-shadow: 1px 1px 0px #809030;
+}
+.bg-blue {
+    background-color: var(--label-blue);
+    text-shadow: 1px 1px 0px #406090;
+}
+
+/* =========================
+   Buttons
+========================= */
+.btn-reset {
+    background-color: #bcd24c;
+    border: 1px solid #9cb23c;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 3px;
+    font-weight: 900;
+    font-size: 13px;
+    cursor: pointer;
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.2);
+}
+.btn-reset:hover {
+    background-color: #acc23c;
+}
+
+/* 스탯 버튼 그룹 */
+.stat-btn-group {
+    display: flex;
+    gap: 2px;
+    margin-left: 4px;
+}
+
+.btn-stat {
+    width: 24px;
+    height: 24px;
+    background-color: #ffaa32;
+    border: 1px solid #ff9500;
+    color: white;
+    font-weight: 900;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    line-height: 1;
+    padding: 0;
+}
+.btn-stat:hover {
+    background-color: #ff9500;
+}
+.btn-stat:active {
+    background-color: #8ba37e;
+    transform: translateY(1px);
+}
+
+/* =========================
+   AP Area
+========================= */
+.ap-area {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    flex-shrink: 0;
+}
+.ap-title {
+    font-size: 12px;
+    font-weight: 900;
+    color: #5a7a40;
+}
+.ap-val {
+    background: white;
+    border: 1px solid #ccc;
+    width: 80px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 900;
+}
+
+/* =========================
+   Preset
+========================= */
+/* .preset-container - 더 이상 사용하지 않음 (프리셋이 stat-window 내부로 이동)
+.preset-container {
+    width: 280px;
+    background: #3a3c58;
+    border: 2px solid #222;
+    border-radius: 5px 5px 0 0;
+    margin-bottom: -2px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+*/
+
+/* .preset-header - 미사용
+.preset-header {
+    color: #fff;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: center;
+    text-shadow: 1px 1px 1px #000;
+}
+*/
+
+.preset-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.preset-buttons {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+.preset-action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.btn-preset {
+    flex: 1;
+    height: 32px;
+    background: #4b4e73;
+    border: 1px solid #222;
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    border-radius: 3px;
+}
+.btn-preset:hover {
+    background: #5d618f;
+}
+.btn-preset.active {
+    background: #bcd24c;
+    color: #333;
+    border: 1px solid #fff;
+    font-weight: bold;
+}
+
+.btn-save-preset,
+.btn-capture-preset {
+    flex: 1;
+    height: 32px;
+    border: 1px solid #222;
+    color: #eee;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: 0.2s;
+}
+
+.btn-save-preset {
+    background: #555;
+}
+.btn-save-preset:hover {
+    background: #777;
+}
+
+.btn-capture-preset {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.btn-capture-preset:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(102, 126, 234, 0.4);
+}
+
+#active-preset-label {
+    margin-top: 5px;
+    font-size: 13px;
+    color: #000000;
+    text-align: center;
+}
+
+/* =========================
+   Search Results
+========================= */
+#search-results {
+    position: absolute;
+    width: 100%;
+    background: #222;
+    z-index: 100;
+    max-height: 250px;
+    overflow-y: auto;
+    border: 1px solid #555;
+}
+
+/* 기존 search-item (사용 중이면 유지) */
+.search-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    color: #ffffff;
+}
+.search-item img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+/* JS 인라인 제거용 search 결과 클래스 */
+.search-result-item {
+    padding: 8px;
+    cursor: pointer;
+    color: #fff;
+    border-bottom: 1px solid #333;
+    display: flex;
+    align-items: center;
+}
+.search-result-item img {
+    width: 24px;
+    margin-right: 10px;
+}
+
+/* =========================
+   Inventory List / Grid
+========================= */
+.item-list-area {
+    min-height: 100px;
+    max-height: 200px;
+    overflow-y: auto;
+    background: rgba(0,0,0,0.3);
+    margin: 5px;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+/* inv-item (중복 정의 통합) */
+.inv-item {
+    padding: 6px;
+    margin-bottom: 4px;
+    background: #4b4e73;
+    border: 1px solid #333;
+    font-size: 11px;
+    color: #eee;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.inv-item:hover {
+    background: #5d618f;
+}
+.inv-item.equipped {
+    background-color: #eef;
+    font-weight: bold;
+}
+
+/* 장착된 아이템 강조 스타일 (기존 유지) */
+#equipped-list .inv-item {
+    border-left: 3px solid #bcd24c;
+    background: #3e415b;
+}
+
+.delete-btn {
+    color: #f13a3a;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+/* 4열 그리드 레이아웃 */
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 58px);
+    grid-template-rows: repeat(7, 58px);
+    gap: 2px;
+    padding: 10px;
+    background: #e1e1e1;
+    width: fit-content;
+    margin: 0 auto;
+    border: 2px solid #555;
+    box-shadow: inset 1px 1px 4px rgba(0,0,0,0.2);
+}
+
+/* 슬롯 */
+.item-slot {
+    width: 58px;
+    height: 58px;
+    background-color: #d0d0d0;
+    border: 1px solid #b5b5b5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.item-slot.has-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
+
+.item-slot:hover {
+    background: rgba(255, 255, 255, 0.9);
+    outline: 2px solid #bcd24c;
+}
+
+.item-slot img {
+    width: 42px;
+    height: auto;
+    /* image-rendering: pixelated; */
+}
+
+/* 슬롯 내 관리 버튼 */
+.slot-manage-btn {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 16px;
+    height: 16px;
+    background: rgba(50, 50, 50, 0.9);
+    border: 1px solid #777;
+    color: #fff;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 2px;
+    z-index: 10;
+    opacity: 0.7;
+}
+.slot-manage-btn:hover {
+    opacity: 1;
+    background: #555;
+}
+
+/* =========================
+   Tooltip
+========================= */
+
+/* (정리) JS에서 생성하는 #item-tooltip 기본 스타일 */
+#item-tooltip {
+    position: fixed;
+    display: none;
+    background-color: rgba(10, 11, 26, 0.96);
+    color: #fff;
+    padding: 12px;
+    border: 1px solid #7a7ea3;
+    border-radius: 4px;
+    z-index: 10000;
+    pointer-events: none;
+    font-size: 12px;
+    width: 220px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+/* 기존 tooltip 스타일들 (사용 중이면 유지) */
+.item-tooltip {
+    position: fixed;
+    z-index: 10000;
+    min-width: 220px;
+    background-color: #3e4263;
+    border: 1px solid #777;
+    border-radius: 8px;
+    padding: 12px;
+    color: white;
+    font-family: 'Malgun Gothic', sans-serif;
+    pointer-events: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.tooltip-header {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.tooltip-top-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.tooltip-icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
+.tooltip-icon-box img {
+    width: 40px;
+    height: 40px;
+    image-rendering: pixelated;
+}
+
+.tooltip-req-info {
+    font-size: 11px;
+    color: #ddd;
+    line-height: 1.4;
+}
+
+.tooltip-job-list {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #fff;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    margin-top: 5px;
+    padding-top: 5px;
+}
+
+.tooltip-stats-section {
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.tooltip-stat-row {
+    margin: 3px 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* 또 다른 툴팁 박스 스타일 (사용 중이면 유지) */
+.item-tooltip-box {
+    position: fixed;
+    background: rgba(20, 20, 40, 0.95);
+    border: 2px solid #7a7ea3;
+    padding: 12px;
+    z-index: 10000;
+    pointer-events: none;
+    min-width: 150px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.tt-name {
+    color: #ffcc00;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.tt-stat {
+    color: #66ff66;
+    font-size: 12px;
+}
+
+/* =========================
+   Equipment Window (Avatar Slots)
+========================= */
+.equipment-window {
+    width: 260px;
+    background: #fff;
+    border: 1px solid #adb5bd;
+    border-radius: 4px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    font-family: 'Arial', sans-serif;
+}
+
+.equip-body {
+    position: relative;
+    padding: 10px;
+    background: #333;
+}
+
+.equipped-list {
+    overflow-y: auto;
+    max-height: 100%;
+    touch-action: pan-y;
+}
+
+/* 아바타 실루엣 */
+.avatar-silhouette {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 180px;
+    background: url('silhouette_placeholder.png') no-repeat center;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+/* (정리) equip-grid/slot 최종값 기준 통합 */
+.equip-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 34px);
+    grid-template-rows: repeat(5, 34px);
+    gap: 2px;
+    padding: 10px;
+    justify-content: center;
+}
+
+.slot {
+    width: 34px;
+    height: 34px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #4a4a4a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    font-size: 8px;
+    color: rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+/* 빈 슬롯 텍스트 */
+.slot.empty::before {
+    content: attr(data-slot);
+    position: absolute;
+    word-break: break-all;
+    line-height: 1;
+}
+
+/* 붉은색 특수 슬롯 */
+.slot.red-slot {
+    border-color: #a33535;
+    background: rgba(241, 190, 190, 0.5);
+}
+
+.slot img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    z-index: 2;
+}
+
+.slot:hover {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #bcd24c;
+}
+
+/* =========================
+   Equipped List Row (Drag)
+========================= */
+/* 기존 정의 + JS 인라인 제거용 확장 클래스 포함 */
+.equipped-item-row {
+    display: flex;
+    align-items: center;
+    padding: 10px 8px;
+    border-bottom: 1px solid #333;
+    color: #eee;
+    cursor: grab;
+    transition: all 0.2s;
+    user-select: none;
+    touch-action: none; /* 터치 스크롤 방지 */
+    position: relative;
+}
+
+.equipped-item-row:hover {
+    background-color: rgba(188, 210, 76, 0.15);
+}
+
+.equipped-item-row:active {
+    cursor: grabbing;
+}
+
+.equipped-item-row.drag-over {
+    border-top: 2px solid #ffcc00;
+}
+
+.equipped-item-row.dragging {
+    opacity: 0.8;
+    background: rgba(188, 210, 76, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.equipped-item-placeholder {
+    background: rgba(188, 210, 76, 0.2);
+    border: 2px dashed #bcd24c;
+    margin: 4px 0;
+    border-radius: 4px;
+}
+
+.equipped-item-icon {
+    width: 32px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.equipped-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    pointer-events: none;
+}
+
+.equipped-item-name {
+    font-weight: bold;
+    font-size: 14px;
+    color: #fff;
+}
+
+.equipped-item-main-stats {
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.equipped-item-sub-stats {
+    color: #aaaaaa;
+    font-size: 10px;
+}
+
+/* (기존에 있던 장착 아이템 행 스타일들 - 사용 중이면 유지) */
+.equip-item-row {
+    display: flex;
+    padding: 10px 5px;
+    border-bottom: 1px solid rgb(0 0 0 / 10%);
+    gap: 12px;
+    align-items: flex-start;
+}
+.equip-item-icon-wrapper {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.equip-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+.equip-item-name {
+    color: #fff;
+    font-size: 13.5px;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+.main-stats {
+    color: #fff;
+    font-size: 11px;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 8px;
+}
+.sub-stats {
+    color: #aaaaaa;
+    font-size: 11px;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 8px;
+}
+
+/* =========================
+   Skill Window (JS 인라인 제거용)
+========================= */
+.skill-row {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #333;
+    background: #1a1b2e;
+}
+
+.skill-icon-box {
+    margin-right: 12px;
+    width: 32px;
+    height: 32px;
+    background: #000;
+    border: 1px solid #444;
+    border-radius: 4px;
+}
+.skill-icon-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.skill-name {
+    font-size: 13px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.skill-level-row {
+    font-size: 11px;
+    color: #eee;
+    margin-top: 5px;
+}
+
+.skill-level-input {
+    width: 45px;
+    background: #222;
+    border: 1px solid #555;
+    color: #fff;
+    text-align: center;
+}
+
+.skill-level-max {
+    color: #666;
+}
+
+/* =========================
+   Buff Window (JS 인라인 제거용)
+========================= */
+.buff-list {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.buff-item {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #444;
+    background: #111;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.buff-item img {
+    width: 30px;
+    height: 30px;
+}
+
+.buff-item.active {
+    border: 1px solid #bcd24c;
+    background: rgba(188, 210, 73, 0.2);
+    box-shadow: 0 0 8px rgba(188, 210, 73, 0.5);
+}
+
+/* =========================
+   Modal System (정리 통합)
+========================= */
+.modal {
+    display: none; /* JS에서 flex로 변경 */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+/* 최종 modal-content 값 기준(기존 중복 통합) */
+.modal-content {
+    background: #4a4d7d;
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 320px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    overflow: hidden;
+    animation: zoomIn 0.18s ease-out;
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(.96); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.mod-header-title {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    font-weight: bold;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+/* 모달 레이아웃 */
+.req-info-container {
+    display: flex;
+    padding: 15px;
+    gap: 15px;
+    align-items: center;
+}
+
+/* 아이템 이미지 박스 */
+.item-img-box {
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.item-img-box img {
+    max-width: 40px;
+    max-height: 40px;
+}
+
+/* 요구 스탯 */
+.req-stats {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 12px;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+/* 직업 체크 영역(있으면 유지) */
+.job-check-area {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* 옵션 리스트 */
+.mod-option-list {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px 15px;
+}
+
+/* 모달 내부 행 (기존 + 유지) */
+.mod-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    height: 30px;
+}
+
+.mod-label {
+    width: 85px;
+    text-align: right;
+    font-size: 13px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 1;
+}
+
+.mod-input {
+    background: #2f3151;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    color: white;
+    padding: 4px 6px;
+    font-size: 13px;
+    text-align: center;
+    width: 65px;
+    height: 26px;
+    outline: none;
+}
+
+/* 아이템 수정 모달 내부 디자인(추가 구조) */
+.mod-row-design {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.mod-input-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* 옵션 입력 */
+.mod-opt-input {
+    width: 60px;
+    background: #2e3152;
+    border: 1px solid #7a7ea3;
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+}
+
+/* JS addOptionRow용(인라인 제거) */
+.mod-opt-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 15px;
+    align-items: center;
+    color: #fff;
+}
+.mod-opt-row input.mod-opt-input {
+    width: 50px;
+    background: #222;
+    border: 1px solid #444;
+    color: #fff;
+    text-align: center;
+}
+
+/* 옵션 삭제 버튼 */
+.btn-stat-del {
+    background: #6b6e9a;
+    border: none;
+    color: white;
+    padding: 2px 8px;
+    cursor: pointer;
+    font-size: 11px;
+    border-radius: 3px;
+}
+
+/* 장비 추가시 삭제 버튼 스타일 보강 */
+.mod-del-btn {
+    background: none;
+    border: none;
+    color: #f87171;
+    cursor: pointer;
+    font-size: 11px;
+    width: 35px;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: bold;
+    padding: 0;
+}
+.mod-del-btn:hover {
+    text-decoration: underline;
+    color: #ff9999 !important;
+}
+
+/* 모달 하단 버튼 영역 */
+.mod-footer {
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.btn-save {
+    background: white;
+    color: #4b4e73;
+    font-weight: bold;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.btn-del {
+    background: white;
+    color: #4b4e73;
+    font-weight: bold;
+    border: none;
+    padding: 5px 6px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.btn-cancel {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* =========================
+   Stat Modify Modal
+========================= */
+.stat-modify-modal {
+    width: 320px !important;
+    background: #2a2c3d !important;
+    border: 2px solid #5d6184 !important;
+    border-radius: 10px !important;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+.stat-calc-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.stat-preview {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(0,0,0,0.3);
+    padding: 10px 20px;
+    border-radius: 8px;
+    width: 100%;
+    justify-content: center;
+}
+
+.stat-box-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.st-label {
+    font-size: 11px;
+    color: #aaa;
+    margin-bottom: 2px;
+}
+.st-val {
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+}
+.stat-arrow {
+    color: #ffcc00;
+    font-size: 16px;
+}
+
+.stat-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.op-symbol {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffcc00;
+}
+
+#stat-change-input {
+    width: 120px;
+    height: 45px;
+    font-size: 22px;
+    text-align: center;
+    background: #1a1b26;
+    border: 1px solid #444;
+    color: #fff;
+    border-radius: 5px;
+}
+#stat-change-input:focus {
+    outline: none;
+    border-color: #ffcc00;
+}
+
+/* =========================
+   Responsive Patch
+   (append to bottom of main.css)
+========================= */
+
+/* 공통: 전체가 화면 밖으로 밀려나지 않도록 */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body.main-layout {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px;
+  padding-top: 16px; /* 기존 50px이 모바일에서 너무 큼 */
+}
+
+/* 기본 창들이 화면 폭에 맞게 줄어들 수 있도록 */
+.preset-window,
+.stat-window,
+.item-window,
+.skill-window,
+.buff-window,
+.equip-window {
+  box-sizing: border-box;
+}
+
+/* 검색 인풋이 너무 좁지 않게 */
+#item-search {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* 인벤토리 그리드가 작은 화면에서 튀어나오는 것 방지 */
+.inventory-grid {
+  max-width: 100%;
+  overflow: auto;
+}
+
+
+/* ============ Tablet (768px ~ 1024px): 2열 ============ */
+@media (max-width: 1024px) and (min-width: 768px) {
+  body.main-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    align-items: start;
+    padding: 16px;
+  }
+
+  /* left-column은 세로 배치 유지 */
+  .left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+  }
+
+  /* 프리셋은 left-column 내부 첫 번째 */
+  .preset-window {
+    width: 100%;
+  }
+
+  /* 각 창은 칸에 맞춰 100% */
+  .stat-window,
+  .equip-window,
+  .right-sidebar,
+  .item-window,
+  .skill-window,
+  .buff-window {
+    width: 100%;
+  }
+
+  /* right-sidebar 내부 간격 */
+  .right-sidebar {
+    gap: 14px;
+    width: 100%;
+  }
+
+  /* 스크롤: 너무 길어지지 않게 */
+  #skill-list-container {
+    max-height: 260px;
+    overflow-y: auto;
+  }
+
+  /* 장착 리스트는 태블릿에서 너무 눌리지 않게 "필요하면" 스크롤 */
+  #equipped-list {
+    max-height: 100%;
+  }
+}
+
+/* ============ Mobile (<= 767px): 1열 ============ */
+@media (max-width: 767px) {
+  body.main-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  /* left-column도 세로 배치 */
+  .left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  /* 창들은 모두 100% */
+  .preset-window,
+  .stat-window,
+  .equip-window,
+  .right-sidebar,
+  .item-window,
+  .skill-window,
+  .buff-window {
+    width: 100%;
+    padding: 10px;
+  }
+
+  /* 라벨 폭/폰트 조정 */
+  .label {
+    width: 70px;
+    font-size: 13px;
+  }
+  .val-box {
+    font-size: 13px;
+  }
+  select, input {
+    font-size: 13px;
+  }
+
+  /* 프리셋 버튼 줄바꿈 대응 */
+  .preset-wrapper {
+    flex-wrap: wrap;
+  }
+  
+  .preset-action-buttons {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .btn-save-preset,
+  .btn-capture-preset {
+    width: 100%;
+  }
+
+  /* 인벤토리: 4열 유지, 넘치면 스크롤 */
+  .inventory-grid {
+    grid-template-columns: repeat(4, 54px);
+    grid-template-rows: repeat(7, 54px);
+    justify-content: start;
+    margin: 0;
+  }
+  .item-slot {
+    width: 54px;
+    height: 54px;
+  }
+  .item-slot img {
+    width: 38px;
+  }
+
+  /* 장착 리스트 줄바꿈 */
+  .equipped-item-name {
+    word-break: break-word;
+  }
+
+  /* 툴팁 폭 제한 */
+  #item-tooltip {
+    width: 200px;
+    max-width: calc(100vw - 24px);
+  }
+
+  /* 스킬/장착 리스트 높이 제한 + 스크롤 */
+  #skill-list-container {
+    max-height: 220px;
+    overflow-y: auto;
+  }
+  #equipped-list {
+    max-height: 100%;
+  }
+
+  /* 검색 결과 높이 제한 */
+  #search-results {
+    max-height: 200px;
+  }
+  
+  /* 모바일에서 장비 아이템 터치 피드백 */
+  .equipped-item-row {
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(188, 210, 76, 0.3);
+  }
+  
+  .equipped-item-row:active {
+    background: rgba(188, 210, 76, 0.2);
+    transform: scale(0.98);
+  }
+}
+
+/* =========================
+   Screenshot Helper
+========================= */
+.screenshot-hide {
+    display: none !important;
+}
+
