@@ -918,7 +918,7 @@ input {
 ========================= */
 .buff-list {
     display: flex;
-    gap: 8px;
+    gap: 7px;
     flex-wrap: wrap;
     padding: 10px;
 }
